@@ -1,5 +1,5 @@
 <div class="main-content center container">
-    <form action="{{ form_action }}" method="POST" ectype="multipart/form-data">
+    <form action="{{ form_action }}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-content form-content-grid">
             {% for field in form %}
@@ -11,16 +11,14 @@
                         <p class="help-text">{{field.help_text}}</p>
                     {% endif %}
                     {{field.errors}}
+                </div>
 
-                    {% if field.name == 'cover' and field.value.url %}
-                        <div class="span-2">
-                            <img src="{{ field.value.url }}" alt="capa da receita">
-                        </div>
-
-                    {% endif %}
-                
-                </div>  
-            {% endfor %}
+                {% if field.name == 'cover' and field.value.url %}
+                    <div class="span-2">
+                        <img src="{{ field.value.url }}" alt="capa da receita">
+                    </div>
+                {% endif %}
+            {% endfor %}            
         </div>
 
         {% if form.errors %}
