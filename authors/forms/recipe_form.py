@@ -17,7 +17,7 @@ class AuthorRecipeForm(forms.ModelForm):
 
     class Meta:
         model = Recipe
-        fields = 'title', 'description', 'preparation_time', 'preparation_time_unit', 'servings', 'serving_unit', 'praparation_steps', 'cover'
+        fields = 'title', 'description', 'preparation_time', 'preparation_time_unit', 'servings', 'servings_unit', 'preparation_steps', 'cover'
 
         wigets = {
             'cover': forms.FileInput(
@@ -53,6 +53,6 @@ class AuthorRecipeForm(forms.ModelForm):
             self._my_errors['description'].append('Cannot be equal to title')
         
         
-        if self._my_erros:
+        if self._my_errors:
             raise ValidationError(self._my_errors)
         return super_clean
