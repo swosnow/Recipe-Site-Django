@@ -1,7 +1,7 @@
 :root {
-    --color-primary: #269fe6;
+    --color-primary: #FF8805;
     --color-primary-hover: #2086c2;
-    --color-primary-dark: #13141f;
+    --color-primary-dark: #FF8805;
     --color-primary-dark-hover: #212336;
     --color-primary-light: #d4ecfa;
     --color-primary-light-hover: #bdd8e7;
@@ -35,6 +35,15 @@
     --spacing-gutter-medium: 3rem;
     --spacing-gutter-large: 4rem;
 }
+/*/* Color Theme Swatches in Hex */
+.Sesame-Seeds-Health-Benefits-Tips-and-Recipes-1-hex { color: #D9BD6C; }
+.Sesame-Seeds-Health-Benefits-Tips-and-Recipes-2-hex { color: #612F05; }
+.Sesame-Seeds-Health-Benefits-Tips-and-Recipes-3-hex { color: #C99D44; }
+.Sesame-Seeds-Health-Benefits-Tips-and-Recipes-4-hex { color: #CFB665; }
+.Sesame-Seeds-Health-Benefits-Tips-and-Recipes-5-hex { color: #FAE1AC; }
+
+
+
 img {
     max-width: 100%;
 }
@@ -48,13 +57,53 @@ a {
     margin: 0;
     box-sizing: border-box;
 }
+header{
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    
+}
+.head{
+    background: url(hybrid-storytellers-xw1fgF9-JIo-unsplash.jpg) no-repeat;
+    height: 50vh;
+    background-size: cover;
+    background-position: center;
+}
+.logo{
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--color-white);
+    letter-spacing: 1.5px;
+    cursor: pointer;
+}
+
+nav li{
+    display: inline-block;
+    list-style: none;
+    
+    font-size: 3rem;
+    padding: 0px 40px;
+    color: var(--color-primary-dark);
+}
+
+nav li a:hover{
+    color: var(--color-primary);
+    transition: all 0.4s ease 0s;
+}
+
 html {
     font-size: 62.5%;
 }
 body {
     font-size: 1.6rem;
     font-family: var(--font-primary);
-    background: var(--color-gray-1);
+    background: var(--color-white);
     color: var(--color-dark-text);
 }
 h1,
@@ -70,10 +119,9 @@ h6 {
     margin: 0 auto;
     padding: var(--spacing-gutter-medium);
 }
-.main-header-container {
-    background: var(--color-primary-dark);
-}
+
 .main-logo {
+    
     font-size: 4rem;
     color: var(--color-white);
     text-decoration: none;
@@ -132,11 +180,11 @@ color: var(--color-primary);
     gap: var(--spacing-gutter-large);
 }
 .recipe {
-    background: var(--color-white);
+    background: #FFAC52;
     box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.2);
     transform: scale(1);
     transition: all 300ms ease-in-out;
-    border-radius: 0.4rem;
+    border-radius: 1.4rem;
     overflow: hidden;
 }
 .recipe img {
@@ -161,6 +209,7 @@ color: var(--color-primary);
 
 .recipe-author {
     padding: 0 var(--spacing-gutter-medium);
+    
     }
 .recipe-content {
     padding: var(--spacing-gutter-medium);
@@ -184,7 +233,7 @@ color: var(--color-primary);
     display: flex;
     flex-flow: row wrap;
     padding: var(--spacing-gutter-medium);
-    background: var(--color-gray-1);
+    background: #CC6C04;
 }
 .recipe-meta {
     display: flex;
@@ -206,7 +255,7 @@ font-size: 1.6rem;
     transition: all 300ms ease-in-out;
 }
 .recipe-footer a:hover {
-    filter: brightness(2);
+    filter: brightness(1.2);
 }
 .main-content-detail  .recipe-list-item {
     max-width: 84rem;
