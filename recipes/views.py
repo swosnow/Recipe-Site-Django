@@ -1,9 +1,11 @@
-from django.shortcuts import render, get_list_or_404
-from recipes.models import Recipe
+from django.shortcuts import render, get_list_or_404, redirect
+from django.urls import reverse
+from recipes.models import Recipe, Like
 from django.http.response import Http404
 from django.db.models import Q
 from django.core.paginator import Paginator
 from .utils.pagination import make_pagination
+from django.contrib import messages
 import os
 
 
@@ -70,3 +72,30 @@ def search(request):
                    'pagination_range':pagination_range,
                    'additional_url_query': f'&q={search_term}'
     })
+
+def like_dislike(request):
+    if request.user.is_authenticated:
+        user = request.user
+        if request.method == 'POST':
+            post_id = request.POST.get('post_id')
+            post_obj = Recipe.objects.get(id=post_id)
+
+            if user in post_obj.likes.all():
+                post_obj.likes.remove(user)
+            else:
+                post_obj.likes.add(user)
+            like, created = Like.objects.get_or_create(user=user, post_id=post_id)
+
+            if not created:
+                if like.value == 'Like':
+                    like.value = 'Unlike'
+                else:
+                    like.value = 'Like'
+            like.save()
+
+            return redirect(reverse('recipes:home'))
+           
+    
+    else:
+        messages.success(request, ("You Must be logged in!"))
+        return redirect('recipes:home')

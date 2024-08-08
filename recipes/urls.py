@@ -9,6 +9,7 @@ urlpatterns = [
          views.category, name="category"),
     path('recipes/<int:id>/', views.recipe, name="recipe"),
     path('recipes/search/', views.search, name="search"),
+    path('recipes/like_dislike/', views.like_dislike, name='like_dislike'),
 ]
 
 

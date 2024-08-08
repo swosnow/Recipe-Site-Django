@@ -7,18 +7,25 @@ import os
 def delete_cover(instance):
     try:
         os.remove(instance.cover.path)
-    except(ValueError, FileNotFoundError):
+    except (ValueError, FileNotFoundError):
         ...
 
+
 @receiver(pre_delete, sender=Recipe)
-def recipe_post(sender, instance, *args, **kwargs):
+def recipe_cover_delete(sender, instance, *args, **kwargs):
     old_instance = Recipe.objects.filter(pk=instance.pk).first()
-    delete_cover(old_instance)
+
+    if old_instance:
+        delete_cover(old_instance)
 
 
 @receiver(pre_save, sender=Recipe)
 def recipe_cover_update(sender, instance, *args, **kwargs):
     old_instance = Recipe.objects.filter(pk=instance.pk).first()
+
+    if not old_instance:
+        return
+
     is_new_cover = old_instance.cover != instance.cover
 
     if is_new_cover:

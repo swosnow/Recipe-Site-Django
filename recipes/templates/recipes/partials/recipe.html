@@ -54,6 +54,29 @@
         <p>{{ recipe.description }}</p>
     </div>
 
+    <div class="likes">
+
+        <form action="{% url "recipes:like_dislike" %}" method="POST" class="like">
+            {% csrf_token %}
+            <input type="hidden" name="post_id" value="{{recipe.id}}">
+            
+            {% if user not in recipe.likes.all %}
+                <div class="buttonlike"> 
+                    <button class="button-like" type="submit"><i class="fas fa-heart"></i></button>
+                </div>
+            
+            {% else %}
+                <div>
+                    <button class="button-unlike" type="submit"><i class="fas fa-heart"></i></button>        
+                </div>
+                
+            
+            {% endif %}
+        </form>
+        <strong>{{recipe.likes.all.count}} Likes</strong>
+
+    </div>
+
     <div class="recipe-meta-container">
         <div class="recipe-meta recipe-preparation">
             <h3 class="recipe-meta-title"><i class="fas fa-stopwatch"></i> Preparo</h3>
@@ -68,6 +91,9 @@
             </div>
         </div>
     </div>
+
+
+
     {% if is_detail_page is not True  %}
         <footer class="recipe-footer">
             <a class="recipe-read-more button button-dark button-full-width" href="{% url 'recipes:recipe' recipe.id %}">

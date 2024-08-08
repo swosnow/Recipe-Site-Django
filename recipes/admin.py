@@ -1,8 +1,10 @@
 from django.contrib import admin
 
 
-from .models import Category, Recipe
+from .models import Category, Recipe, Like
 
+
+admin.site.register(Like)
 
 class CategoryAdmin(admin.ModelAdmin):
     ...
