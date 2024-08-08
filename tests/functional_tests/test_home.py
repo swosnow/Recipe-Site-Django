@@ -11,4 +11,5 @@ class HomePageFuncTest(LiveServerTestCase):
         browser = make_chrome_browser()
         browser.get(self.live_server_url)
         self.sleep(6)
+        
         browser.quit()
