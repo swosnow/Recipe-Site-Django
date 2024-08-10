@@ -46,11 +46,11 @@ class AuthorRecipeForm(forms.ModelForm):
         description = cleaned_data.get('description')
 
         if len(title) < 5:
-            self._my_errors['title'].append('Must have at least 5 chars')
+            self._my_errors['title'].append('Deve possuir pelo menos 5 letras')
         
         if title == description:
-            self._my_errors['title'].append('Cannot be equal to description')
-            self._my_errors['description'].append('Cannot be equal to title')
+            self._my_errors['title'].append('Não pode ser igual a descrição')
+            self._my_errors['description'].append('Não pode ser igual ao título')
         
         
         if self._my_errors:

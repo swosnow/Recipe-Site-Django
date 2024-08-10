@@ -10,7 +10,8 @@
     {% include 'global/partials/messages.html' %}
 
     <div class="authors-dashboard-container">
-      <h3>Your recipes</h3>
+      <h3>Suas receitas</h3>
+      
 
       <ul>
         {% for recipe in recipes %}
@@ -28,7 +29,7 @@
           </li>
         {% empty %}
           <li>
-            <p>You do not have recipes, please create one.</p>
+            <p>Você não possui receitas. Elas apareceram aqui.</p>
           </li>
         {% endfor %}
       </ul>

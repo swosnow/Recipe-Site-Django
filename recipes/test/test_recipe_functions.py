@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse, resolve
 from recipes import views
+from recipes.models import Recipe, Category, User
 
 class TestRecipeViewFuncton(TestCase):
 
@@ -29,7 +30,12 @@ class TestRecipeViewFuncton(TestCase):
     def test_recipe_home_client_status_200(self):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
-    
+
+    def test_recipe_category_return_404(self):
+        response = self.client.get(reverse('recipes:category', args=(1,)))
+        self.assertEqual(response.status_code, 404)
+        
     def test_recipe_home_view_loads_correct_template(self):
         response = self.client.get(reverse('recipes:home'))
         self.assertTemplateUsed(response, 'recipes/pages/home.html')
+    

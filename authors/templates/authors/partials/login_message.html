@@ -1,10 +1,7 @@
 {% if request.user.is_authenticated %}
 <div class="login-message">
-    You are logged with
+    Você está logado como
     {{ request.user.username }}
-    <a href="{% url 'authors:dashboard' %}">See your recipes</a>, 
-    <a href="{% url 'authors:dashboard_recipe_new' %}">create a new recipe</a> or  
-    {% include 'authors/partials/form_logout.html' %}
-    <a class="authors-logout-link" href="#">click here</a> to logout.
+    <li>As receitas que você enviar ficará em análise e será publicada por um administrador, neste período ainda é possível edita-la</li>
 </div>
 {% endif %}

@@ -30,7 +30,7 @@ def register_create(request):
         user = form.save(commit=False)
         user.set_password(user.password)
         user.save()
-        messages.success(request, 'Your user is created, please log in.')
+        messages.success(request, 'Seu usuário foi criado com sucesso!!, por favor faça login.')
 
         del(request.session['register_form_data'])
         return redirect(reverse('authors:login'))
@@ -57,12 +57,12 @@ def login_create(request):
         )
 
         if authenticated_user is not None:
-            messages.success(request, 'Your are logged in.')
+            messages.success(request, 'Você está logado.')
             login(request, authenticated_user)
         else:
-            messages.error(request, 'Invalid credentials')
+            messages.error(request, 'Credenciais inválidas')
     else:
-        messages.error(request, 'Invalid username or password')
+        messages.error(request, 'Usuário ou senha inválidos')
 
     return redirect(reverse('authors:dashboard'))
 
@@ -139,5 +139,5 @@ def dashboard_recipe_delete(request):
     if not recipe:
         raise Http404()
     recipe.delete()
-    messages.success(request, 'Deleted successfully.')
+    messages.success(request, 'Deletado com sucesso!.')
     return redirect(reverse('authors:dashboard'))
