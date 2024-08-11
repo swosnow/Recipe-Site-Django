@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'INSECURE')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.environ.get('DEBUG') == '1' else False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1','https://receitasdafamilia.isqueanderson.shop', '34.67.153.140', 'https://www.receitasdafamilia.isqueanderson.shop', 'http://receitasdafamilia.isqueanderson.shop', 'http://www.receitasdafamilia.isqueanderson.shop']
+ALLOWED_HOSTS: list[str] = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
     "https://receitasdafamilia.isqueanderson.shop",
