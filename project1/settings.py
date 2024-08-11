@@ -25,7 +25,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'INSECURE')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.environ.get('DEBUG') == '1' else False
-ALLOWED_HOSTS: list[str] = ['*']
+ALLOWED_HOSTS = ['https://receitasdafamilia.isqueanderson.shop']
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://receitasdafamilia.isqueanderson.shop",
+    "https://www.receitasdafamilia.isqueanderson.shop",
+    "http://receitasdafamilia.isqueanderson.shop",
+    "http://www.receitasdafamilia.isqueanderson.shop",
+]
 
 
 # Application definition
